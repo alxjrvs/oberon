@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "oberon",
+  "description": "Claude Code plugins from alxjrvs. A registry, not a library — every plugin here is sourced from the repository that already uses it in anger.",
+  "owner": {
+    "name": "alxjrvs",
+    "url": "https://github.com/alxjrvs"
+  },
+  "plugins": [
+    {
+      "name": "agent-friendly-repo",
+      "source": {
+        "source": "github",
+        "repo": "alxjrvs/dotFiles",
+        "ref": "main"
+      },
+      "strict": false,
+      "skills": ["./dot-claude/skills/agent-friendly-repo"],
+      "displayName": "Agent-Friendly Repo",
+      "description": "Configure a GitHub repo so the agent completion path — commit, push, PR, auto-merge — actually lands: squash-only merges, a branch-protection ruleset that keeps CI required without a human review gate agents cannot satisfy, stacked PRs, and optional Dependabot auto-merge or a merge queue.",
+      "version": "1.0.0",
+      "author": {
+        "name": "alxjrvs",
+        "url": "https://github.com/alxjrvs"
+      },
+      "homepage": "https://github.com/alxjrvs/dotFiles/blob/main/dot-claude/skills/agent-friendly-repo/SKILL.md",
+      "repository": "https://github.com/alxjrvs/dotFiles",
+      "license": "MIT",
+      "keywords": [
+        "github",
+        "auto-merge",
+        "branch-protection",
+        "stacked-prs",
+        "merge-queue",
+        "dependabot"
+      ]
+    }
+  ]
+}
