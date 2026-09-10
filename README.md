@@ -15,33 +15,19 @@ effortless.
 |---|---|
 | `agent-friendly-repo` | Configures a GitHub repo so the agent completion path — commit, push, PR, `gh pr merge --auto --squash` — actually lands. Squash-only merges, a branch-protection ruleset that keeps CI required *without* a human review gate an agent cannot satisfy, stacked PRs, and optional Dependabot auto-merge or a merge queue. |
 
-## This repository holds no plugin code, and that is the design
+## One copy, and it lives here
 
-There is one file here that matters: `.claude-plugin/marketplace.json`. It is a **registry**,
-not a library. Every entry sources straight from the repository that already uses that plugin
-day to day — for `agent-friendly-repo`, that is
-[`alxjrvs/dotFiles`](https://github.com/alxjrvs/dotFiles).
+A plugin exists in exactly one place. Two copies of a skill with no mechanism keeping them
+equal drift silently, and the copy that gets *used* is never the copy that gets *edited* — the
+published version ends up stale, invisibly, until someone installs it and gets last month's
+advice.
 
-The obvious way to build a marketplace is to copy each skill in and maintain it here. That
-creates two copies of the same file with no mechanism keeping them equal, and the copy that
-gets *used* is never the copy that gets *edited*. It drifts silently, and the published version
-is the stale one — the failure mode is invisible until someone installs it and gets last
-month's advice.
+So each plugin is held here rather than pointed at. A skill that configures **other people's**
+repositories is not machine state and has no business in a dotfiles repo; this is its home, and
+there is no second copy anywhere to fall behind it.
 
-Sourcing in place makes drift **impossible rather than unlikely**. There is nothing to sync
-because there is nothing duplicated. The version people install is the version being exercised.
-
-`strict: false` is what allows this: the marketplace entry carries the metadata, so the source
-repository needs no `plugin.json` and no plugin-shaped directory layout. It stays a dotfiles
-repo that happens to be installable.
-
-## What is deliberately not here
-
-`dotFiles` also ships two subagents, `drift-triage` and `guard-tester`. They stay unpublished:
-both are written against that machine's specific setup — one reads `boom verify` output, the
-other runs that repo's own guard suites. They are useful there and noise anywhere else.
-
-A marketplace earns trust by what it declines to publish.
+`strict: false` keeps that cheap: the marketplace entry carries the metadata, so a plugin needs
+no `plugin.json` and no plugin-shaped directory layout — a skill directory is enough.
 
 ## License
 
