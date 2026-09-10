@@ -15,7 +15,7 @@
         "ref": "main"
       },
       "strict": false,
-      "skills": ["./dot-claude/skills/agent-friendly-repo"],
+      "skills": ["./home/dot_claude/skills/agent-friendly-repo"],
       "displayName": "Agent-Friendly Repo",
       "description": "Configure a GitHub repo so the agent completion path — commit, push, PR, auto-merge — actually lands: squash-only merges, a branch-protection ruleset that keeps CI required without a human review gate agents cannot satisfy, stacked PRs, and optional Dependabot auto-merge or a merge queue.",
       "version": "1.0.0",
@@ -23,7 +23,7 @@
         "name": "alxjrvs",
         "url": "https://github.com/alxjrvs"
       },
-      "homepage": "https://github.com/alxjrvs/dotFiles/blob/main/dot-claude/skills/agent-friendly-repo/SKILL.md",
+      "homepage": "https://github.com/alxjrvs/dotFiles/blob/main/home/dot_claude/skills/agent-friendly-repo/SKILL.md",
       "repository": "https://github.com/alxjrvs/dotFiles",
       "license": "MIT",
       "keywords": [
