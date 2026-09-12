@@ -15,7 +15,9 @@
         "ref": "main"
       },
       "strict": false,
-      "skills": ["./skills/agent-friendly-repo"],
+      "skills": [
+        "./skills/agent-friendly-repo"
+      ],
       "displayName": "Agent-Friendly Repo",
       "description": "Configure a GitHub repo so the agent completion path — commit, push, PR, auto-merge — actually lands: squash-only merges, a branch-protection ruleset that keeps CI required without a human review gate agents cannot satisfy, stacked PRs, and optional Dependabot auto-merge or a merge queue.",
       "version": "1.1.0",
@@ -33,6 +35,32 @@
         "stacked-prs",
         "merge-queue",
         "dependabot"
+      ]
+    },
+    {
+      "name": "1password-mcp",
+      "source": "./plugins/1password-mcp",
+      "strict": false,
+      "mcpServers": {
+        "1password": {
+          "command": "/Applications/1Password.app/Contents/MacOS/1password-mcp"
+        }
+      },
+      "displayName": "1Password MCP",
+      "description": "The 1Password desktop app's own MCP server, by absolute path: the desktop app does not always hand a spawned server the login PATH. Needs the app installed with its MCP server enabled; then installing this plugin is the whole setup, and nothing is written to ~/.claude.json.",
+      "version": "1.0.0",
+      "author": {
+        "name": "alxjrvs",
+        "url": "https://github.com/alxjrvs"
+      },
+      "homepage": "https://github.com/alxjrvs/oberon",
+      "repository": "https://github.com/alxjrvs/oberon",
+      "license": "MIT",
+      "keywords": [
+        "1password",
+        "mcp",
+        "secrets",
+        "macos"
       ]
     }
   ]
