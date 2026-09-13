@@ -1,0 +1,22 @@
+name: lint
+
+# `lint` is the check the main ruleset requires (.github/gate.sh in alxjrvs/dotFiles, run once
+# against this repo). The marketplace manifest and every skill are validated by the tool that
+# reads them; the installer is the same one that provisions every machine.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - run: curl -fsSL https://claude.ai/install.sh | bash && echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+      - run: claude plugin validate . --strict
+      - run: claude plugin validate ./skills --strict
