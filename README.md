@@ -16,6 +16,13 @@ effortless.
 | `agent-friendly-repo` | Configures a GitHub repo so the agent completion path — commit, push, PR, `gh pr merge --auto --squash` — actually lands. Squash-only merges, a branch-protection ruleset that keeps CI required *without* a human review gate an agent cannot satisfy, stacked PRs, and optional Dependabot auto-merge or a merge queue. |
 | `1password-mcp` | The 1Password desktop app's own MCP server, by absolute path. Installing the plugin is the whole setup: nothing is written to `~/.claude.json`, so a dotfiles repo can converge it through `enabledPlugins` like any other plugin. |
 
+## The gate
+
+`main` takes squash-merged pull requests with the `lint` check green: the marketplace
+manifest and every skill validated by `claude plugin validate`. The ruleset is
+[`.github/gate.sh`](https://github.com/alxjrvs/dotFiles/blob/main/.github/gate.sh) in
+dotFiles, run once against this repo.
+
 ## One copy, and it lives here
 
 A plugin exists in exactly one place. Two copies of a skill with no mechanism keeping them
