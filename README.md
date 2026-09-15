@@ -39,4 +39,4 @@ no `plugin.json` and no plugin-shaped directory layout — a skill directory is 
 
 ## License
 
-MIT.
+The [MIT License](LICENSE).
