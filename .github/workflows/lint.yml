@@ -9,12 +9,21 @@ on:
     branches: [main]
   pull_request:
 
+# A superseded PR push cancels its own old run; pushes to main never cancel each other.
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}"
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 permissions:
   contents: read
 
 jobs:
   lint:
     runs-on: ubuntu-latest
+    # Both runs on record took 21s and 29s. Without this the job inherits GitHub's
+    # 360-minute default, so a hung `curl | bash` holds the required `lint` check
+    # pending for six hours — six hours of a PR that looks like it is still working.
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
       - run: curl -fsSL https://claude.ai/install.sh | bash && echo "$HOME/.local/bin" >> "$GITHUB_PATH"
