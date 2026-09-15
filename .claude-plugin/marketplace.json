@@ -48,7 +48,7 @@
         "./skills/chezmoi-change"
       ],
       "displayName": "chezmoi Change Ritual",
-      "description": "The worktree \u2192 apply \u2192 PR ritual for a chezmoi dotfiles repo: the source checkout stays on main, a change is made in a worktree and applied from there with --source \"$PWD\", and the four traps that each cost a day \u2014 --init with --source, a source checkout left on a branch, a deleted source that never deletes its target, and a run script that cannot call chezmoi \u2014 are stated rather than rediscovered.",
+      "description": "The worktree → apply → PR ritual for a chezmoi dotfiles repo: the source checkout stays on main, a change is made in a worktree and applied from there with --source \"$PWD\", and the four traps that each cost a day — --init with --source, a source checkout left on a branch, a deleted source that never deletes its target, and a run script that cannot call chezmoi — are stated rather than rediscovered.",
       "author": {
         "name": "alxjrvs",
         "url": "https://github.com/alxjrvs"
