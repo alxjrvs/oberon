@@ -37,6 +37,33 @@
       ]
     },
     {
+      "name": "chezmoi-change",
+      "source": {
+        "source": "github",
+        "repo": "alxjrvs/oberon",
+        "ref": "main"
+      },
+      "strict": false,
+      "skills": [
+        "./skills/chezmoi-change"
+      ],
+      "displayName": "chezmoi Change Ritual",
+      "description": "The worktree \u2192 apply \u2192 PR ritual for a chezmoi dotfiles repo: the source checkout stays on main, a change is made in a worktree and applied from there with --source \"$PWD\", and the four traps that each cost a day \u2014 --init with --source, a source checkout left on a branch, a deleted source that never deletes its target, and a run script that cannot call chezmoi \u2014 are stated rather than rediscovered.",
+      "author": {
+        "name": "alxjrvs",
+        "url": "https://github.com/alxjrvs"
+      },
+      "homepage": "https://github.com/alxjrvs/oberon/blob/main/skills/chezmoi-change/SKILL.md",
+      "repository": "https://github.com/alxjrvs/oberon",
+      "license": "MIT",
+      "keywords": [
+        "chezmoi",
+        "dotfiles",
+        "worktree",
+        "macos"
+      ]
+    },
+    {
       "name": "1password-mcp",
       "source": "./plugins/1password-mcp",
       "strict": false,
