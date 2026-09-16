@@ -38,6 +38,38 @@ there is no second copy anywhere to fall behind it.
 `strict: false` keeps that cheap: the marketplace entry carries the metadata, so a plugin needs
 no `plugin.json` and no plugin-shaped directory layout — a skill directory is enough.
 
+## Staying current
+
+Removing the `version` pins means an install resolves to HEAD of `main` — the copy this repo
+edits. That only reaches a machine that refreshes, and **Claude Code disables auto-update for
+third-party marketplaces by default**, so an installed plugin sits at the commit it was
+installed from until something moves it.
+
+Turn it on once, per marketplace: `/plugin` → **Marketplaces** → **oberon** → **Enable
+auto-update**. Claude Code then refreshes the catalogue and updates installed plugins in the
+background after startup, on a random delay of up to ten minutes so the running session keeps
+the version it launched with. When a plugin does update it prompts for `/reload-plugins`;
+otherwise the new version loads on the next launch.
+
+A machine that converges from a dotfiles repo can declare it instead of toggling it by hand:
+
+```json
+{
+  "extraKnownMarketplaces": {
+    "oberon": {
+      "source": { "source": "github", "repo": "alxjrvs/oberon" },
+      "autoUpdate": true
+    }
+  }
+}
+```
+
+This is a reconcile, not an upgrade step: the setting is declared once and Claude Code does the
+refreshing, so a provisioning script still installs a plugin only when it is absent. Note that
+`autoUpdate` on an `extraKnownMarketplaces` entry is documented as the *managed-settings* path;
+if a user-scope `settings.json` is what you have, confirm the marketplace reads as auto-updating
+in `/plugin` and fall back to the toggle above if it does not.
+
 ## License
 
 The [MIT License](LICENSE).
