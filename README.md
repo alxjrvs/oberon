@@ -14,8 +14,6 @@ effortless.
 | Plugin | What it does |
 |---|---|
 | `agent-friendly-repo` | Configures a GitHub repo so the agent completion path — commit, push, PR, `gh pr merge --auto --squash` — actually lands. Squash-only merges, a branch-protection ruleset that keeps CI required *without* a human review gate an agent cannot satisfy, stacked PRs, and optional Dependabot auto-merge or a merge queue. |
-| `chezmoi-change` | The worktree → apply → PR ritual for a chezmoi dotfiles repo. The source checkout stays on `main`; a change is made in a worktree and applied from there with `--source "$PWD"`. Carries the four traps that each cost a day, so they are read rather than rediscovered. |
-| `1password-mcp` | The 1Password desktop app's own MCP server, by absolute path. Installing the plugin is the whole setup: nothing is written to `~/.claude.json`, so a dotfiles repo can converge it through `enabledPlugins` like any other plugin. |
 
 ## The gate
 
