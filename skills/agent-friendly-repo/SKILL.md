@@ -10,7 +10,7 @@ Turn a GitHub repo into one where the agent completion path — commit → push 
 
 This mutates **outward-facing, shared-repo config**. Always read current state, print a proposed-changes diff, and **ask before mutating** — even under auto mode. Do the read + report unprompted; gate the writes.
 
-**The full checklist — every setting this enforces, the ruleset JSON, and the optional Dependabot and merge-queue branches — is in [`references/checklist.md`](references/checklist.md).** Read the slice the request actually needs. Read the slice the request needs — a skill body loads in full every time it fires.
+**The full checklist — every setting this enforces, the ruleset JSON, and the optional Dependabot and merge-queue branches — is in [`references/checklist.md`](references/checklist.md).** Read the slice the request needs — a skill body loads in full every time it fires.
 
 ## Procedure
 
@@ -97,9 +97,9 @@ This mutates **outward-facing, shared-repo config**. Always read current state, 
 9. **Dependabot auto-merge (optional, only if the user wants it).** Confirm the repo actually has
    a `.github/dependabot.yml` (if not, that's the first question — which ecosystems), that the
    aggregate gate job needs no Actions secrets, and that no merge queue is enabled. Then add the
-   workflow above plus a minor/patch group, and **ask for the update-type ceiling** rather than
-   assuming it — `github-actions` bumps in particular change code that runs against a
-   write-scoped token.
+   workflow in `references/checklist.md` plus a minor/patch group, and **ask for the update-type
+   ceiling** rather than assuming it — `github-actions` bumps in particular change code that runs
+   against a write-scoped token.
 
 10. **Report** the final state: merge settings, ruleset id + rules, whether classic was removed, aggregate-gate action taken, queue enabled or deferred (and why), whether a `.worktreeinclude` covers the repo's gitignored env files, and **stack readiness** — `gh extension list | grep github/gh-stack` for the tool, whether `required_linear_history` and empty `bypass_actors` hold (the two rules stacks actually require), and that the landing path is watch-then-`gh stack merge` (no queue, by standing decision). If a queue *is* already configured on the repo, say so — it changes the merge semantics (enqueue instead of merge-now, method flags ignored, large stacks split across groups).
 
